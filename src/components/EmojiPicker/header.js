@@ -14,12 +14,12 @@ const ListWrapper = css('ul')`
 `;
 
 const ListItem = css('li')`
-  padding: 0px;
   margin: 0px;
   height: 100%;
   list-style-type: none;
   display: inline-block;
   width: 11.11%;
+  padding: 12px 0px;
   text-align: center;
 `;
 

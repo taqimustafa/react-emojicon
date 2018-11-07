@@ -1,24 +1,17 @@
 import React, { Component } from 'react';
 import css from 'react-emotion';
 import Header from './header';
+import Search from './search';
+import Emojis from './emojis';
 
 const EmojiWrapper = css('div')`
   margin: 0px;
-  padding: 0px;
-  border: 1px solid #909090;
+  border: 1px solid #d9d9d9;
   border-radius: 5px;
   max-width: 340px;
+  padding: 5px;
 `;
 
-const EmojiSearch = css('div')`
-
-`;
-const RecentEmojis = css('div')`
-
-`;
-const EmojiBody = css('div')`
-
-`;
 const EmojiFooter = css('div')`
 
 `;
@@ -27,18 +20,9 @@ class EmojiPicker extends Component {
   render() {
     return (
       <EmojiWrapper>
-        <Header>
-          Header
-        </Header>
-        <EmojiSearch>
-          Search
-        </EmojiSearch>
-        <RecentEmojis>
-          Recent
-        </RecentEmojis>
-        <EmojiBody>
-          Body
-        </EmojiBody>
+        <Header />
+        <Search />
+        <Emojis />
         <EmojiFooter>
           Footer
         </EmojiFooter>
