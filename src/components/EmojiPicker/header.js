@@ -32,6 +32,9 @@ const Icon = css('img')`
 
 
 class Header extends Component {
+  shouldComponentUpdate(nextProps) {
+    return false;
+  }
   render() {
     return (
       <HeaderWrapper>

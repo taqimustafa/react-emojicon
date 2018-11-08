@@ -26,7 +26,7 @@ export default [
         "has_img_messenger": false
     },
     {
-        "name": null,
+        "name": "STAR KEY",
         "unified": "002A-FE0F-20E3",
         "non_qualified": "002A-20E3",
         "docomo": null,

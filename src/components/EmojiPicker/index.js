@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import css from 'react-emotion';
+import EmojisList from '../../utils/emojis';
+import Categories from '../../utils/categories';
 import Header from './header';
 import Search from './search';
 import Emojis from './emojis';
@@ -12,20 +14,29 @@ const EmojiWrapper = css('div')`
   padding: 5px;
 `;
 
-const EmojiFooter = css('div')`
-
-`;
-
 class EmojiPicker extends Component {
+  constructor() {
+    super();
+    this.emojiKey = {};
+    this.emojiNameArray = [];
+    EmojisList.forEach((emoji) => {
+      this.emojiKey[emoji.short_name] = {
+        "name": emoji.name,
+        "image": emoji.image,
+      };
+      this.emojiNameArray.push({
+        name: emoji.name,
+        key: emoji.short_name,
+      });
+    });
+  }
+
   render() {
     return (
       <EmojiWrapper>
         <Header />
         <Search />
-        <Emojis />
-        <EmojiFooter>
-          Footer
-        </EmojiFooter>
+        <Emojis categories={Categories} emojis={this.emojiKey} />
       </EmojiWrapper>
     );
   }

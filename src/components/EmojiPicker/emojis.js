@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import css from 'react-emotion';
-import EmojisList from '../../utils/emojis';
-import Categories from '../../utils/categories';
+import { connect } from 'react-redux';
+import { activeEmoji } from '../../action';
+
 const size = 26;
 
 const EmojiWrapper = css('div')`
@@ -56,45 +57,49 @@ const Emoji = css('img')`
   height: ${size}px;
 `;
 
-class Emojis extends Component {
-  constructor() {
-    super();
-    this.emojiKey = {};
-    EmojisList.forEach((emoji) => {
-      this.emojiKey[emoji.short_name] = {
-        "name": emoji.name,
-        "image": emoji.image,
-      };
-    });
-  }
-  render() {
-    console.log(this.emojiKey);
-    return (
-      <EmojiWrapper>
-        <CategoryListContainer>
-          {Object.keys(Categories).map((category) => (
-            <CategoryContainer key={category}>
-              <CategoryHeading>
-                {category}
-              </CategoryHeading>
-              <EmojiListContainer>
-                {Categories[category].map((emoji) => (
-                  <EmojiListItem key={emoji}>
-                    <Emoji
-                      data-key={emoji}
-                      data-name={this.emojiKey[emoji].name}
-                      image={this.emojiKey[emoji].image}
-                      src={require(`../../assets/images/apple/${this.emojiKey[emoji].image}`)}
-                    />
-                  </EmojiListItem>
-                ))}
-              </EmojiListContainer>
-            </CategoryContainer>
-          ))}
-        </CategoryListContainer>
-      </EmojiWrapper>
-    );
-  }
+function Emojis(props) {
+  return (
+    <EmojiWrapper>
+      <CategoryListContainer>
+        {Object.keys(props.categories).map((category) => (
+          <CategoryContainer key={category}>
+            <CategoryHeading>
+              {category}
+            </CategoryHeading>
+            <EmojiListContainer>
+              {props.categories[category].map((emoji) => (
+                <EmojiListItem 
+                  key={emoji}
+                  onMouseEnter={() => { props.activeEmoji(emoji); }}
+                  onMouseLeave={() => { props.activeEmoji(null); }}
+                >
+                  <Emoji
+                    data-key={emoji}
+                    data-name={props.emojis[emoji].name}
+                    image={props.emojis[emoji].image}
+                    src={require(`../../assets/images/apple/${props.emojis[emoji].image}`)}
+                  />
+                </EmojiListItem>
+              ))}
+            </EmojiListContainer>
+          </CategoryContainer>
+        ))}
+      </CategoryListContainer>
+    </EmojiWrapper>
+  );
 }
 
-export default Emojis;
+const mapStateToProps = (state) => {
+  return {};
+}
+
+const mapDispatchToProps = {
+  activeEmoji,
+}
+
+const EmojisContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Emojis)
+
+export default EmojisContainer;

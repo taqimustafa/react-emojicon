@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import css from 'react-emotion';
 import EmojiPicker from './components/EmojiPicker';
+import { Provider } from 'react-redux'
+import store from './store';
 import './styles/fonts.css';
 
 const ApplicationWrapper = css('div')`
@@ -11,9 +13,11 @@ const ApplicationWrapper = css('div')`
 class App extends Component {
   render() {
     return (
-      <ApplicationWrapper>
-        <EmojiPicker />
-      </ApplicationWrapper>
+      <Provider store={store}>
+        <ApplicationWrapper>
+          <EmojiPicker />
+        </ApplicationWrapper>
+      </Provider>
     );
   }
 }
