@@ -5,6 +5,7 @@ import Categories from '../../utils/categories';
 import Header from './header';
 import Search from './search';
 import Emojis from './emojis';
+import Footer from './footer';
 
 const EmojiWrapper = css('div')`
   margin: 0px;
@@ -37,6 +38,7 @@ class EmojiPicker extends Component {
         <Header />
         <Search />
         <Emojis categories={Categories} emojis={this.emojiKey} />
+        <Footer emojis={this.emojiKey}/>
       </EmojiWrapper>
     );
   }

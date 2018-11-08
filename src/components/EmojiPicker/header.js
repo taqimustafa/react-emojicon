@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import css from 'react-emotion';
 import ClockIcon from '../../assets/images/icons/clock.svg';
 const HeaderWrapper = css('div')`
@@ -31,45 +31,40 @@ const Icon = css('img')`
 `;
 
 
-class Header extends Component {
-  shouldComponentUpdate(nextProps) {
-    return false;
-  }
-  render() {
-    return (
-      <HeaderWrapper>
-        <ListWrapper>
-          <ListItem>
-            <Icon src={ClockIcon} alt="clock" />
-          </ListItem>
-          <ListItem>
-            <Icon src={ClockIcon} alt="clock" />
-          </ListItem>
-          <ListItem>
-            <Icon src={ClockIcon} alt="clock" />
-          </ListItem>
-          <ListItem>
-            <Icon src={ClockIcon} alt="clock" />
-          </ListItem>
-          <ListItem>
-            <Icon src={ClockIcon} alt="clock" />
-          </ListItem>
-          <ListItem>
-            <Icon src={ClockIcon} alt="clock" />
-          </ListItem>
-          <ListItem>
-            <Icon src={ClockIcon} alt="clock" />
-          </ListItem>
-          <ListItem>
-            <Icon src={ClockIcon} alt="clock" />
-          </ListItem>
-          <ListItem>
-            <Icon src={ClockIcon} alt="clock" />
-          </ListItem>
-        </ListWrapper>
-      </HeaderWrapper>
-    );
-  }
+function Header(props) {
+  return (
+    <HeaderWrapper>
+      <ListWrapper>
+        <ListItem>
+          <Icon src={ClockIcon} alt="clock" />
+        </ListItem>
+        <ListItem>
+          <Icon src={ClockIcon} alt="clock" />
+        </ListItem>
+        <ListItem>
+          <Icon src={ClockIcon} alt="clock" />
+        </ListItem>
+        <ListItem>
+          <Icon src={ClockIcon} alt="clock" />
+        </ListItem>
+        <ListItem>
+          <Icon src={ClockIcon} alt="clock" />
+        </ListItem>
+        <ListItem>
+          <Icon src={ClockIcon} alt="clock" />
+        </ListItem>
+        <ListItem>
+          <Icon src={ClockIcon} alt="clock" />
+        </ListItem>
+        <ListItem>
+          <Icon src={ClockIcon} alt="clock" />
+        </ListItem>
+        <ListItem>
+          <Icon src={ClockIcon} alt="clock" />
+        </ListItem>
+      </ListWrapper>
+    </HeaderWrapper>
+  );
 }
 
 export default Header;
