@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import css from 'react-emotion';
 import EmojiPicker from './components/EmojiPicker';
+import EmojiRenderer from './components/EmojiRenderer';
 import { Provider } from 'react-redux'
 import store from './store';
 import './styles/fonts.css';
@@ -19,6 +20,13 @@ class App extends Component {
       <Provider store={store}>
         <ApplicationWrapper>
           <EmojiPicker onSelect={this.selectEmoji}/>
+          <EmojiRenderer>
+            :smile:
+            <div>
+              Hello World :grinning:
+              <span>:heart:</span>
+            </div>
+          </EmojiRenderer>
         </ApplicationWrapper>
       </Provider>
     );
