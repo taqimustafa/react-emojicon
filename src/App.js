@@ -23,8 +23,8 @@ class App extends Component {
           <EmojiRenderer>
             :smile:
             <div>
-              Hello World :grinning:
-              <span>:heart:</span>
+              Hello, :grinning:,
+              <b>Bold Text</b>
             </div>
           </EmojiRenderer>
         </ApplicationWrapper>
