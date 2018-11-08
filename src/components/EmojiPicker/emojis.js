@@ -72,6 +72,7 @@ function Emojis(props) {
                   key={emoji}
                   onMouseEnter={() => { props.activeEmoji(emoji); }}
                   onMouseLeave={() => { props.activeEmoji(null); }}
+                  onClick={() => { props.onSelect(props.emojis[emoji]); }}
                 >
                   <Emoji
                     data-key={emoji}

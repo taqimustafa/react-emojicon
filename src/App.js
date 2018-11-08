@@ -11,11 +11,14 @@ const ApplicationWrapper = css('div')`
 `;
 
 class App extends Component {
+  selectEmoji(emoji) {
+    console.log(emoji);
+  }
   render() {
     return (
       <Provider store={store}>
         <ApplicationWrapper>
-          <EmojiPicker />
+          <EmojiPicker onSelect={this.selectEmoji}/>
         </ApplicationWrapper>
       </Provider>
     );

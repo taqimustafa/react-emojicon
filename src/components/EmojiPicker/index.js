@@ -22,6 +22,7 @@ class EmojiPicker extends Component {
     this.emojiNameArray = [];
     EmojisList.forEach((emoji) => {
       this.emojiKey[emoji.short_name] = {
+        "key": emoji.short_name,
         "name": emoji.name,
         "image": emoji.image,
       };
@@ -37,7 +38,11 @@ class EmojiPicker extends Component {
       <EmojiWrapper>
         <Header />
         <Search />
-        <Emojis categories={Categories} emojis={this.emojiKey} />
+        <Emojis
+          categories={Categories}
+          emojis={this.emojiKey}
+          onSelect={this.props.onSelect}
+        />
         <Footer emojis={this.emojiKey}/>
       </EmojiWrapper>
     );
