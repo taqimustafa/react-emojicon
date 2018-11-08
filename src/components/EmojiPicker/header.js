@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import css from 'react-emotion';
-import ClockIcon from '../../assets/icons/clock.svg';
+import ClockIcon from '../../assets/images/icons/clock.svg';
 const HeaderWrapper = css('div')`
   margin: 0px;
   padding: 0px;
