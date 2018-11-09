@@ -11,6 +11,18 @@ const ApplicationWrapper = css('div')`
   padding: 0px;
 `;
 
+const RendererWrapper = css('div')`
+  margin-top: 30px;
+  font-size: 30px;
+  font-family: lato-light;
+  font-weight: 100;
+`;
+
+const BoldWrapper = css('b')`
+  font-family: lato-bold;
+  font-weight: bold;
+`;
+
 class App extends Component {
   selectEmoji(emoji) {
     console.log(emoji);
@@ -21,13 +33,22 @@ class App extends Component {
         <ApplicationWrapper>
           <EmojiPicker onSelect={this.selectEmoji}/>
           <EmojiRenderer>
-            :smile:
-            <div>
-              <i>Hello, :grinning:</i>,
-              <b>Bold Text</b>
-              <br/>
-              <strong> Strong Text</strong>
-            </div>
+            <RendererWrapper>
+              :smile:
+              <p>
+                <b>
+                  <i>Hello, :grinning:</i>,
+                  <div>
+                    <p>
+                      <BoldWrapper>Bold Text</BoldWrapper>
+                      <br/>
+                      <strong> Strong Text</strong>
+                      <i>Italic Text</i>
+                    </p>
+                  </div>
+                </b>
+              </p>
+            </RendererWrapper>
           </EmojiRenderer>
         </ApplicationWrapper>
       </Provider>
