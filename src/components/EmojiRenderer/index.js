@@ -8,29 +8,38 @@ const EmojiRendererWrapper = css('div')`
 `;
 
 function renderEmoji(child, emojiArray) {
-  const renderChild = child.map((newChild) => {
-    if (typeof newChild === 'string') {
-      const emojiObj = newChild.replace(/:([\w\-\_\+]+):/g, (value) => {
-        const emojiKey = value.replace(/:/g, '');
-        if(emojiArray) {
-          const url = require(`../../assets/images/apple/${emojiArray[emojiKey].image}`);
-          return `<img alt="emoji" src="${url}" />`;
-        }
-      });
-      return <span dangerouslySetInnerHTML={{ __html: emojiObj }} />;
-    } else if (typeof newChild.props.children === 'string') {
-      const emojiObj = newChild.props.children.replace(/:([\w\-\_\+]+):/g, (value) => {
-        const emojiKey = value.replace(/:/g, '');
-        if (emojiArray) {
-          const url = require(`../../assets/images/apple/${emojiArray[emojiKey].image}`);
-          return `<img alt="emoji" src="${url}" />`;
-        }
-      });
-      return <span dangerouslySetInnerHTML={{ __html: emojiObj }} />;
-    }
-    return renderEmoji(newChild.props.children, emojiArray);
-  });
-  return renderChild;
+  if (child) {
+    const renderChild = child.map((newChild) => {
+      if (typeof newChild === 'string') {
+        const emojiObj = newChild.replace(/:([\w\-\_\+]+):/g, (value) => {
+          const emojiKey = value.replace(/:/g, '');
+          if(emojiArray) {
+            const url = require(`../../assets/images/apple/${emojiArray[emojiKey].image}`);
+            return `<img alt="emoji" src="${url}" />`;
+          }
+        });
+        return <span dangerouslySetInnerHTML={{ __html: emojiObj }} />;
+      } else if (typeof newChild.props.children === 'string') {
+        const emojiObj = newChild.props.children.replace(/:([\w\-\_\+]+):/g, (value) => {
+          const emojiKey = value.replace(/:/g, '');
+          if (emojiArray) {
+            const url = require(`../../assets/images/apple/${emojiArray[emojiKey].image}`);
+            return `<img alt="emoji" src="${url}" />`;
+          }
+        });
+        return React.createElement(
+          newChild.type,
+          { ...newChild.props },
+          <span dangerouslySetInnerHTML={{ __html: emojiObj }} />
+        );
+      } else if(newChild.props.children) {
+        return renderEmoji(newChild.props.children, emojiArray);
+      }
+      return newChild;
+    });
+    return renderChild;
+  }
+  return child;
 }
 
 class EmojiRenderer extends Component {
@@ -47,7 +56,6 @@ class EmojiRenderer extends Component {
     });
   }
   render() {
-    console.log(this.emojiKey);
     return (
       <EmojiRendererWrapper>
         {renderEmoji(this.props.children, this.emojiKey)}
